@@ -20,10 +20,9 @@ jobs:
       uses: lukka/run-cmake@v2
       with:
         cmakeGenerator: 'Ninja'  
-        cmakeListsOrSettingsJson: 'CMakeListsTxtAdvanced'
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         cmakeAppendedArgs: '-DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
-        buildWithCMakeArgs: '-t doc install'
+        buildWithCMakeArgs: 'install'
         buildDirectory: '${{ runner.workspace }}/build'
     - uses: actions/upload-artifact@v2
       with:
