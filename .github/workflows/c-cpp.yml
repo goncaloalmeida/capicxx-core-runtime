@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        configs: [Release, Debug]
+        configs: [Release]
     
     steps:
     - name: Checkout
@@ -21,10 +21,3 @@ jobs:
       uses: nicledomaS/cmake_build_action@v1.4
       with:
         config: ${{ matrix.configs }}
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeAppendedArgs: '-DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
-        buildDirectory: '${{ runner.workspace }}/build'
-    - uses: actions/upload-artifact@v2
-      with:
-        name: capi
-        path: '${{ runner.workspace }}/install/**/*'
