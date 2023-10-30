@@ -15,14 +15,12 @@ jobs:
         configs: [Release, Debug]
     
     steps:
-    - uses: actions/checkout@v2
-    - name: install dependencies
-      run: |
-        sudo apt-get update -qq
-    - name: Run CMake+Ninja without triplet
-      uses: lukka/run-cmake@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build project
+      uses: nicledomaS/cmake_build_action@v1.4
       with:
-        cmakeGenerator: 'Ninja'  
+        config: ${{ matrix.configs }}
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         cmakeAppendedArgs: '-DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
         buildDirectory: '${{ runner.workspace }}/build'
