@@ -15,14 +15,12 @@ jobs:
     - name: install dependencies
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y asciidoc source-highlight doxygen graphviz
     - name: Run CMake+Ninja without triplet
       uses: lukka/run-cmake@v2
       with:
         cmakeGenerator: 'Ninja'  
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         cmakeAppendedArgs: '-DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
-        buildWithCMakeArgs: '-t install'
         buildDirectory: '${{ runner.workspace }}/build'
     - uses: actions/upload-artifact@v2
       with:
