@@ -22,7 +22,7 @@ jobs:
         cmakeGenerator: 'Ninja'  
         cmakeListsOrSettingsJson: 'CMakeListsTxtAdvanced'
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeAppendedArgs: '--DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
+        cmakeAppendedArgs: '-DCMAKE_INSTALL_PREFIX=${{ runner.workspace }}/install'
         buildWithCMakeArgs: '-t doc install'
         buildDirectory: '${{ runner.workspace }}/build'
     - uses: actions/upload-artifact@v2
