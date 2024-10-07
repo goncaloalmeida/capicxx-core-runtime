@@ -1,6 +1,8 @@
 name: C/C++ CI
 
 on:
+  workflow_call:  # Indicates that this is a reusable workflow
+
   push:
     branches: [ "master" ]
   pull_request:
